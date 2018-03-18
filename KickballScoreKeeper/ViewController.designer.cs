@@ -15,7 +15,7 @@ namespace KickballScoreKeeper
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField balls { get; set; }
+        UIKit.UIStepper ballsStepper { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -23,7 +23,11 @@ namespace KickballScoreKeeper
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField fouls { get; set; }
+        UIKit.UIButton clearHomeScoreButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIStepper foulStepper { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -31,15 +35,35 @@ namespace KickballScoreKeeper
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField outs { get; set; }
+        UIKit.UIStepper homeScoreStepper { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField strikes { get; set; }
+        UIKit.UIStepper outStepper { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIStepper strikesStepper { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtBalls { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtFouls { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtHome { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtOuts { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtStrikes { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -53,19 +77,43 @@ namespace KickballScoreKeeper
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIStepper vistorScoreStepper { get; set; }
 
+        [Action ("ballsStepperChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ballsStepperChanged (UIKit.UIStepper sender);
+
         [Action ("clearVisitorClicked:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void clearVisitorClicked (UIKit.UIButton sender);
 
-        [Action ("vistorScoreChange:")]
+        [Action ("foulStepperValueChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
-        partial void vistorScoreChange (UIKit.UIStepper sender);
+        partial void foulStepperValueChanged (UIKit.UIStepper sender);
+
+        [Action ("homeScoreValueChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void homeScoreValueChanged (UIKit.UIStepper sender);
+
+        [Action ("outStepperChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void outStepperChanged (UIKit.UIStepper sender);
+
+        [Action ("resetHomeScoreClicked:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void resetHomeScoreClicked (UIKit.UIButton sender);
+
+        [Action ("strikesStepperValueChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void strikesStepperValueChanged (UIKit.UIStepper sender);
+
+        [Action ("visitorScoreStepperStep:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void visitorScoreStepperStep (UIKit.UIStepper sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (balls != null) {
-                balls.Dispose ();
-                balls = null;
+            if (ballsStepper != null) {
+                ballsStepper.Dispose ();
+                ballsStepper = null;
             }
 
             if (btnClearVisitorScore != null) {
@@ -73,9 +121,14 @@ namespace KickballScoreKeeper
                 btnClearVisitorScore = null;
             }
 
-            if (fouls != null) {
-                fouls.Dispose ();
-                fouls = null;
+            if (clearHomeScoreButton != null) {
+                clearHomeScoreButton.Dispose ();
+                clearHomeScoreButton = null;
+            }
+
+            if (foulStepper != null) {
+                foulStepper.Dispose ();
+                foulStepper = null;
             }
 
             if (homeScore != null) {
@@ -83,19 +136,44 @@ namespace KickballScoreKeeper
                 homeScore = null;
             }
 
-            if (outs != null) {
-                outs.Dispose ();
-                outs = null;
+            if (homeScoreStepper != null) {
+                homeScoreStepper.Dispose ();
+                homeScoreStepper = null;
             }
 
-            if (strikes != null) {
-                strikes.Dispose ();
-                strikes = null;
+            if (outStepper != null) {
+                outStepper.Dispose ();
+                outStepper = null;
+            }
+
+            if (strikesStepper != null) {
+                strikesStepper.Dispose ();
+                strikesStepper = null;
+            }
+
+            if (txtBalls != null) {
+                txtBalls.Dispose ();
+                txtBalls = null;
+            }
+
+            if (txtFouls != null) {
+                txtFouls.Dispose ();
+                txtFouls = null;
             }
 
             if (txtHome != null) {
                 txtHome.Dispose ();
                 txtHome = null;
+            }
+
+            if (txtOuts != null) {
+                txtOuts.Dispose ();
+                txtOuts = null;
+            }
+
+            if (txtStrikes != null) {
+                txtStrikes.Dispose ();
+                txtStrikes = null;
             }
 
             if (txtVisitor != null) {

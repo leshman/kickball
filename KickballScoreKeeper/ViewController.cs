@@ -15,7 +15,26 @@ namespace KickballScoreKeeper
         {
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
+            this.vistorScoreStepper.Value = 0;
+            this.homeScoreStepper.Value = 0;
+            this.homeScore.Text = "0";
             this.vistorScore.Text = "0";
+
+            this.UpdateTextValue(0, this.txtFouls);
+            this.UpdateTextValue(0, this.txtBalls);
+            this.UpdateTextValue(0, this.txtStrikes);
+            this.UpdateTextValue(0, this.txtOuts);
+
+            this.txtVisitor.ShouldReturn += (textField) => {
+                textField.ResignFirstResponder();
+                return true;
+            };
+
+            this.txtHome.ShouldReturn += (textField) => {
+                textField.ResignFirstResponder();
+                return true;
+            };
+
         }
 
         public override void DidReceiveMemoryWarning()
@@ -28,14 +47,28 @@ namespace KickballScoreKeeper
         {
             var answer = UIAlertController.Create("Clear Visitor Score?", "Would you like to clear the Visitor Score?", UIAlertControllerStyle.Alert);
             answer.AddAction(UIAlertAction.Create("No", UIAlertActionStyle.Cancel, null));
-            answer.AddAction(UIAlertAction.Create("Yes", UIAlertActionStyle.Destructive, action => clearVistorScore()));
+            answer.AddAction(UIAlertAction.Create("Yes", UIAlertActionStyle.Destructive, action => resetScore(this.vistorScoreStepper, this.vistorScore)));
 
             this.PresentViewController(answer, true, null);
         }
 
-        partial void vistorScoreChange(UIStepper sender)
+        private void showClearHomeAlert()
         {
-            this.vistorScore.Text = (Convert.ToInt64(this.vistorScore.Text) + 1).ToString();
+            var answer = UIAlertController.Create("Clear Home Score?", "Would you like to clear the Home Score?", UIAlertControllerStyle.Alert);
+            answer.AddAction(UIAlertAction.Create("No", UIAlertActionStyle.Cancel, null));
+            answer.AddAction(UIAlertAction.Create("Yes", UIAlertActionStyle.Destructive, action => resetScore(this.homeScoreStepper, this.homeScore)));
+
+            this.PresentViewController(answer, true, null);
+        }
+
+        partial void resetHomeScoreClicked(UIButton sender)
+        {
+            this.showClearHomeAlert();
+        }
+
+        partial void visitorScoreStepperStep(UIStepper sender)
+        {
+            this.vistorScore.Text = this.vistorScoreStepper.Value.ToString();
         }
 
         partial void clearVisitorClicked(UIButton sender)
@@ -43,9 +76,41 @@ namespace KickballScoreKeeper
             this.showClearVisitorAlert();
         }
 
-        private void clearVistorScore()
+        private void resetScore(UIStepper field, UITextField textField)
         {
-            this.vistorScore.Text = "0";
+            field.Value = 0;
+            textField.Text = "0";
+
+        }
+
+        partial void homeScoreValueChanged(UIStepper sender)
+        {
+            this.homeScore.Text = this.homeScoreStepper.Value.ToString();
+        }
+
+        partial void ballsStepperChanged(UIStepper sender)
+        {
+            this.UpdateTextValue(sender.Value, this.txtBalls);
+        }
+
+        private void UpdateTextValue(Double value, UITextField field)
+        {
+            field.Text = value.ToString();
+        }
+
+        partial void strikesStepperValueChanged(UIStepper sender)
+        {
+            this.UpdateTextValue(sender.Value, this.txtStrikes);
+        }
+
+        partial void foulStepperValueChanged(UIStepper sender)
+        {
+            this.UpdateTextValue(sender.Value, this.txtFouls);
+        }
+
+        partial void outStepperChanged(UIStepper sender)
+        {
+            this.UpdateTextValue(sender.Value, this.txtOuts);
         }
     }
 }
