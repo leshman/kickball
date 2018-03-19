@@ -202,6 +202,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4165" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="32" y="548" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="roundedRect" minimumFontSize="17" id="4166" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" enabled="NO" userInteractionEnabled="NO">
+                                <rect key="frame" x="28" y="576" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <accessibility key="accessibilityConfiguration" label="Home Score">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                            </textField>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="20" id="4167" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" wraps="YES" value="0">
+                                <rect key="frame" x="149" y="577" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="outStepperChanged:" destination="4169" id="4168" eventType="valueChanged"/>
+                                    <action selector="inningStepperValueChanged:" destination="BYZ-38-t0r" id="4170" eventType="valueChanged"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                     </view>
                     <connections>
@@ -221,6 +246,8 @@
                         <outlet property="strikesStepper" destination="219" id="name-outlet-219"/>
                         <outlet property="foulStepper" destination="220" id="name-outlet-220"/>
                         <outlet property="outStepper" destination="209" id="name-outlet-209"/>
+                        <outlet property="txtInning" destination="4166" id="name-outlet-4166"/>
+                        <outlet property="inningStepper" destination="4167" id="name-outlet-4167"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

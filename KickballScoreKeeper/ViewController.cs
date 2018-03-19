@@ -24,6 +24,7 @@ namespace KickballScoreKeeper
             this.UpdateTextValue(0, this.txtBalls);
             this.UpdateTextValue(0, this.txtStrikes);
             this.UpdateTextValue(0, this.txtOuts);
+            this.UpdateTextValue(0, this.txtInning);
 
             this.txtVisitor.ShouldReturn += (textField) => {
                 textField.ResignFirstResponder();
@@ -111,6 +112,11 @@ namespace KickballScoreKeeper
         partial void outStepperChanged(UIStepper sender)
         {
             this.UpdateTextValue(sender.Value, this.txtOuts);
+        }
+
+        partial void inningStepperValueChanged(UIStepper sender)
+        {
+            this.UpdateTextValue(sender.Value, this.txtInning);
         }
     }
 }

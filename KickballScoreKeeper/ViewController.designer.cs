@@ -39,6 +39,10 @@ namespace KickballScoreKeeper
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIStepper inningStepper { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIStepper outStepper { get; set; }
 
         [Outlet]
@@ -56,6 +60,10 @@ namespace KickballScoreKeeper
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtHome { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtInning { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -92,6 +100,10 @@ namespace KickballScoreKeeper
         [Action ("homeScoreValueChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void homeScoreValueChanged (UIKit.UIStepper sender);
+
+        [Action ("inningStepperValueChanged:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void inningStepperValueChanged (UIKit.UIStepper sender);
 
         [Action ("outStepperChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -141,6 +153,11 @@ namespace KickballScoreKeeper
                 homeScoreStepper = null;
             }
 
+            if (inningStepper != null) {
+                inningStepper.Dispose ();
+                inningStepper = null;
+            }
+
             if (outStepper != null) {
                 outStepper.Dispose ();
                 outStepper = null;
@@ -164,6 +181,11 @@ namespace KickballScoreKeeper
             if (txtHome != null) {
                 txtHome.Dispose ();
                 txtHome = null;
+            }
+
+            if (txtInning != null) {
+                txtInning.Dispose ();
+                txtInning = null;
             }
 
             if (txtOuts != null) {
